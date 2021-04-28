@@ -167,23 +167,23 @@ const SignUp = ({ setIsAuth }) => {
       // Add new user
      const signUpUser = async (values) => {
       try {
-            const token = await reRef.current.getValue()
+            // const token = await reRef.current.getValue()
             const response = await fetch('https://instappmalach.herokuapp.com/auth/signup', { 
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
             },
-            body: JSON.stringify({...values, token})
+            body: JSON.stringify({...values })
           })
           const data = await response.json()
-          reRef.current.reset()
+          // reRef.current.reset()
           if(data.user){
             localStorage.setItem('user', JSON.stringify({...data.user,newUser:true}))
             dispatch(({ type:'AUTH_USER', payload:data.user }))
             setIsAuth(true)
             history.push('/')
           } else {
-         
+            console.log(data);
             setMessage(data.error)
             setOpenAlert(true)
           }
@@ -252,7 +252,7 @@ const SignUp = ({ setIsAuth }) => {
                                 <div style={{marginRight:'7px'}}><ImageIcon/></div>
                                 <label htmlFor="file">{fileName ? `${fileName} UPLOADED` : 'PROFILE IMAGE'} </label></Button>
                                 {props.errors.photo && props.touched.photo ?  <div className="error">{props.errors.photo}</div>  : null}
-                                <ReCaptcha style={{margin:'10px 0px'}} sitekey="6LfruZ4aAAAAAAFNEQG6lPJLbJVjEThKg2DJdjEi" ref={reRef}/> 
+                                {/* <ReCaptcha style={{margin:'10px 0px'}} sitekey="6LfruZ4aAAAAAAFNEQG6lPJLbJVjEThKg2DJdjEi" ref={reRef}/>  */}
                                   {/* Alert error */}
                                     <Collapse in={openAlert}>
                                         <Alert
