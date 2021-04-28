@@ -7,9 +7,10 @@ export default function authgaurd(ComposedComponent, setIsAuthenticate) {
         const [isAuth, setIsAuth] = useState(false)
 
         const isUserAuthenticate = async () => {
-          const response = await fetch('/auth/isauth')
-          const { success } = await response.json()
-          if (success) {
+          // const response = await fetch('/auth/isauth')
+          const user = JSON.parse(localStorage.getItem('user'))
+          // const { success } = await response.json()
+          if (user) {
             setIsAuthenticate(true)
             console.log('auth');
             setIsAuth(true) 
