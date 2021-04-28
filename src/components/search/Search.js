@@ -72,7 +72,7 @@ function Search() {
     }
 
     const findUsers = async () => {
-        const res = await fetch(`/user/users/${searchValue}`)
+        const res = await fetch(`https://instappmalach.herokuapp.com/user/users/${searchValue}`)
         const data = await res.json()
         setUsers(data)
     }

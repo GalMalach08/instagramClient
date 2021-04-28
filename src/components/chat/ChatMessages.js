@@ -55,10 +55,10 @@ const ChatMessages = ({ user, location }) => {
        
         if(message) {
             socket.emit('sendMessage', { name,message }, () => setMessage(''))    
-            await fetch('/message', { method: 'POST', headers: { 'Content-Type':'application/json' },
+            await fetch('https://instappmalach.herokuapp.com/message', { method: 'POST', headers: { 'Content-Type':'application/json' },
             body: JSON.stringify({ UserId: connectedUser.id, reciver_id:user.id, sender_id:connectedUser.id, content: message })
           })
-            await fetch('/message', { method: 'POST', headers: { 'Content-Type':'application/json' },
+            await fetch('https://instappmalach.herokuapp.com/message', { method: 'POST', headers: { 'Content-Type':'application/json' },
             body: JSON.stringify({ UserId: user.id, reciver_id:user.id, sender_id:connectedUser.id, content: message })
          })
         }
@@ -70,10 +70,10 @@ const ChatMessages = ({ user, location }) => {
       }
       navigator.geolocation.getCurrentPosition(position => {
         socket.emit('sendLocation', {latitude: position.coords.latitude, longitude: position.coords.longitude, name}, async () => {
-          await fetch('/message', { method: 'POST', headers: { 'Content-Type':'application/json' },
+          await fetch('https://instappmalach.herokuapp.com/message', { method: 'POST', headers: { 'Content-Type':'application/json' },
           body: JSON.stringify({ UserId: connectedUser.id, reciver_id:user.id, sender_id:connectedUser.id, content: message })
         })
-          await fetch('/message', { method: 'POST', headers: { 'Content-Type':'application/json' },
+          await fetch('https://instappmalach.herokuapp.com/message', { method: 'POST', headers: { 'Content-Type':'application/json' },
           body: JSON.stringify({ UserId: user.id, reciver_id:user.id, sender_id:connectedUser.id, content: message })
        })
       })
@@ -100,7 +100,7 @@ const ChatMessages = ({ user, location }) => {
 
 
     const getConversation = async () => {
-        const response = await fetch('/message/conversation', { 
+        const response = await fetch('https://instappmalach.herokuapp.com/message/conversation', { 
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'

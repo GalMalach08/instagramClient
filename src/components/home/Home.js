@@ -212,7 +212,7 @@ const useStyles = makeStyles((theme) => ({
         date: moment().format('MMMM Do, h:mm a').toString()
       }
         try {
-          const response = await fetch('/post', { 
+          const response = await fetch('https://instappmalach.herokuapp.com/post', { 
           method: 'POST',
           headers: {
               'Content-Type':'application/json'
@@ -298,7 +298,7 @@ const useStyles = makeStyles((theme) => ({
       UserId: JSON.parse(localStorage.getItem('user')).id,
     }
     try {
-      const response = await fetch('/comment', { 
+      const response = await fetch('https://instappmalach.herokuapp.com/comment', { 
       method: 'POST',
       headers: {
           'Content-Type':'application/json'
@@ -333,7 +333,7 @@ const useStyles = makeStyles((theme) => ({
         setPosts([...newArr])
         add = false
       }
-      await fetch('/post/like', { 
+      await fetch('https://instappmalach.herokuapp.com/post/like', { 
         method: 'POST',
         headers: {
             'Content-Type':'application/json'
@@ -349,7 +349,7 @@ const useStyles = makeStyles((theme) => ({
   const getPosts = async () => {
     const postsArr = []
     let index = 0
-    const res = await fetch('/post')
+    const res = await fetch('https://instappmalach.herokuapp.com/post')
     const data = await res.json()
     data.forEach((item) => {
       if(user.Followings.find(followed => followed.followed_id === item.publisher_id) || user.id === item.publisher_id || item.publisher_username === "instagram"){
@@ -383,7 +383,7 @@ const useStyles = makeStyles((theme) => ({
 }
 
 const getStories = async () => {
-  const res = await fetch('/story')
+  const res = await fetch('https://instappmalach.herokuapp.com/story')
   const { stories } = await res.json()
   const storyArr = []
   stories.forEach(story => {
@@ -400,7 +400,7 @@ const getStories = async () => {
 // Get all suggestion users
 const getSuggestionUsers = async () => {
   try {
-    const res = await fetch('/user')
+    const res = await fetch('https://instappmalach.herokuapp.com/user')
     const { users } = await res.json()
     
     const suggestionArr = []
@@ -421,7 +421,7 @@ const getSuggestionUsers = async () => {
 
 const setFollow = async (id) => {
       // make follow
-          const res = await fetch('/user/follow', {
+          const res = await fetch('https://instappmalach.herokuapp.com/user/follow', {
           method: 'POST',
           headers: {
               'Content-Type':'application/json'

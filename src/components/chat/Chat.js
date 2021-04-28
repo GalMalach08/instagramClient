@@ -12,7 +12,7 @@ const Chat = (props) => {
     const [currentChatUser, setCurrentChatUser] = useState('')
     const [userChanged, setUserChanged] = useState(false)
     const getUser = async () => {
-        const res = await fetch(`/user/${id}`)
+        const res = await fetch(`https://instappmalach.herokuapp.com/user/${id}`)
         const { user } = await res.json()
         setCurrentChatUser(user)
     }

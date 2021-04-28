@@ -168,7 +168,7 @@ const SignUp = ({ setIsAuth }) => {
      const signUpUser = async (values) => {
       try {
             const token = await reRef.current.getValue()
-            const response = await fetch('/auth/signup', { 
+            const response = await fetch('https://instappmalach.herokuapp.com/auth/signup', { 
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'

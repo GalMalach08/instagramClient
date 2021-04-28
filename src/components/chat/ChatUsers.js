@@ -29,7 +29,7 @@ const ChatUsers = ({ setUserChanged, userChanged }) => {
 
 
     const getUsers = async () => {
-        const res = await fetch(`/user/follow/${connectedUser.id}`)
+        const res = await fetch(`https://instappmalach.herokuapp.com/user/follow/${connectedUser.id}`)
         const { users } = await res.json()
         setUsers(users)
     }

@@ -40,7 +40,7 @@ const EditProfile = ({ modal, setModal}) => {
 
     // Get user's information
       const getUser = async () => {
-        const res = await fetch(`/user/${id}`)
+        const res = await fetch(`https://instappmalach.herokuapp.com/user/${id}`)
         const data = await res.json()
         const { username, password, profileFileName, profileDescription } = data.user
         setUserProfile({ username, password, description: profileDescription, photo:'' })
@@ -65,7 +65,7 @@ const EditProfile = ({ modal, setModal}) => {
 
        // update the user profile
       const updateSettings = async (values,resetForm) => {
-        const response = await fetch('/user', { 
+        const response = await fetch('https://instappmalach.herokuapp.com/user', { 
         method: 'PATCH',
         headers: {
             'Content-Type':'application/json'

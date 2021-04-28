@@ -44,7 +44,7 @@ const Settings = ({setIsAuth}) => {
 
     const updateUser = async (values) => {
         const id = JSON.parse(localStorage.getItem('user')).id
-        const response = await fetch('/user', {
+        const response = await fetch('https://instappmalach.herokuapp.com/user', {
                         method: 'PATCH',
                         headers: {
                             'Content-Type':'application/json'
@@ -66,7 +66,7 @@ const Settings = ({setIsAuth}) => {
         
         const getInitialValues = async () => {
             const id = JSON.parse(localStorage.getItem('user')).id
-            const res = await fetch(`/user/${JSON.stringify(id)}`)
+            const res = await fetch(`https://instappmalach.herokuapp.com/user/${JSON.stringify(id)}`)
             const data = await res.json()
             delete data.user['password']
             console.log(data.user);

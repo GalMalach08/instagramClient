@@ -64,13 +64,13 @@ const prevBtn = () => (
 )
 
 const bringUser = async () => {
-    const response = await fetch(`/useremail/${JSON.stringify(formik.values.email)}`)
+    const response = await fetch(`https://instappmalach.herokuapp.com/useremail/${JSON.stringify(formik.values.email)}`)
     const data = await response.json()
     if(data.success) setUser(data.user)
 }
 
 const sendEmail = async (values) => {
-    const response = await fetch(`/email/${JSON.stringify(values.email)}`)
+    const response = await fetch(`https://instappmalach.herokuapp.com/email/${JSON.stringify(values.email)}`)
     const data = await response.json()
     if(data.success) console.log('email sent');
     else console.log('email does not sent')

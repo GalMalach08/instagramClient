@@ -28,14 +28,14 @@ const Profile = (props) =>  {
     const user = JSON.parse(localStorage.getItem('user'))
     
     const getUser = async () => {
-        const res = await fetch(`/user/${id}`)
+        const res = await fetch(`https://instappmalach.herokuapp.com/user/${id}`)
         const data = await res.json()
         setUserProfile(data.user)
     }
 
 
     const getUserPosts = async () => {
-        const res = await fetch(`/post/${id}`)
+        const res = await fetch(`https://instappmalach.herokuapp.com/post/${id}`)
       
         const { postArr, numberOfFollowers,  numberOfFollowing} = await res.json()
         console.log(postArr);
@@ -48,7 +48,7 @@ const Profile = (props) =>  {
     const setFollow = async () => {
         // make unfolow
         if(isFollowed) {
-            const res = await fetch('/user/unfollow', {
+            const res = await fetch('https://instappmalach.herokuapp.com/user/unfollow', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
@@ -65,7 +65,7 @@ const Profile = (props) =>  {
           }
         } else {
             // make follow
-                const res = await fetch('/user/follow', {
+                const res = await fetch('https://instappmalach.herokuapp.com/user/follow', {
                 method: 'POST',
                 headers: {
                     'Content-Type':'application/json'

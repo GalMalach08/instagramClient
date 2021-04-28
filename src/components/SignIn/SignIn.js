@@ -134,7 +134,7 @@ const SignIn = ({ setIsAuth }) => {
 
     const loginUser = async (values) =>{
       try {
-        const response = await fetch('/auth/login', { method: 'POST',
+        const response = await fetch('https://instappmalach.herokuapp.com/auth/login', { method: 'POST',
             headers: {
                 'Content-Type':'application/json'
             },
